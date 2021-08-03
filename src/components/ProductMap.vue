@@ -35,10 +35,14 @@
         </el-table-column>
         <el-table-column prop="position" label="位置" width="80">
         </el-table-column>
+        <el-table-column prop="rank" label="级别" width="80">
+        </el-table-column>
         <el-table-column prop="company" label="所属机构" width="100">
         </el-table-column>
         <el-table-column prop="type" label="类型" width="80"> </el-table-column>
         <el-table-column prop="cloudfirm" label="云厂商" width="150">
+        </el-table-column>
+        <el-table-column prop="tencent" label="腾讯云服务" width="150">
         </el-table-column>
         <el-table-column prop="firsttime" label="最早发布" width="100">
         </el-table-column>
@@ -102,6 +106,17 @@
           </el-select>
         </el-form-item>
         <el-form-item
+          label="级别"
+          prop="rank"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="addproductform.rank"
+            autocomplete="off"
+            style="width: 200px"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
           label="所属机构"
           prop="company"
           :label-width="formLabelWidth"
@@ -125,6 +140,16 @@
         >
           <el-input
             v-model="addproductform.cloudfirm"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="腾讯云服务"
+          prop="tencent"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="addproductform.tencent"
             autocomplete="off"
           ></el-input>
         </el-form-item>
@@ -243,6 +268,17 @@
           </el-select>
         </el-form-item>
         <el-form-item
+          label="级别"
+          prop="rank"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="modifyproductform.rank"
+            autocomplete="off"
+            style="width: 200px"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
           label="所属机构"
           prop="company"
           :label-width="formLabelWidth"
@@ -266,6 +302,16 @@
         >
           <el-input
             v-model="modifyproductform.cloudfirm"
+            autocomplete="off"
+          ></el-input>
+        </el-form-item>
+        <el-form-item
+          label="腾讯云服务"
+          prop="tencent"
+          :label-width="formLabelWidth"
+        >
+          <el-input
+            v-model="modifyproductform.tencent"
             autocomplete="off"
           ></el-input>
         </el-form-item>
@@ -377,6 +423,7 @@ export default {
       addproductform: {
         productname: "",
         company: "",
+        rank:"",
         type: "",
         cloudfirm: "",
         firsttime: "",
@@ -385,11 +432,13 @@ export default {
         info: "",
         gzh: "",
         xcx: "",
+        tencent:""
       },
       modifyproductform: {
         productname: "",
         company: "",
         type: "",
+        rank:"",
         cloudfirm: "",
         firsttime: "",
         newtime: "",
@@ -397,10 +446,10 @@ export default {
         info: "",
         gzh: "",
         xcx: "",
+        tencent:""
       },
       mapwidth: {},
       options: [
-        { value: "中央", label: "中央" },
         { value: "北京", label: "北京" },
         { value: "天津", label: "天津" },
         { value: "上海", label: "上海" },
@@ -489,7 +538,7 @@ export default {
           (option = {
             title: {
               text: "产品地图",
-              subtext: "移动端产品",
+              subtext: "移动端产品"
             },
             tooltip: {
               trigger: "item",
@@ -510,7 +559,7 @@ export default {
             visualMap: {
               min: 0,
               max: 10,
-              text: ["High", "Low"],
+              text: ["产品数"],
               realtime: false,
               calculable: true,
               inRange: {
@@ -605,7 +654,6 @@ export default {
     },
     // 编辑按钮
     handleEdit(index, row) {
-      console.log(index, row);
       this.modifyproductcontrol = true;
       this.modifyproductform = row;
     },
