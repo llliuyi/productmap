@@ -1,0 +1,18 @@
+{
+    "envId": "productmappre-0g9a81nf5a21b4e8",
+    "version": "2.0",
+    "$schema": "https://framework-1258016615.tcloudbaseapp.com/schema/latest.json",
+    "functionRoot": "./functions",
+    "functions": [],
+    "framework": {
+        "name": "productmap",
+        "plugins": {
+            "website": {
+                "use": "@cloudbase/framework-plugin-website",
+                "inputs": {
+                    "outputPath": "./"
+                }
+            }
+        }
+    }
+}
